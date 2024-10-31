@@ -31,7 +31,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div
-      className="flex justify-center items-center min-h-screen bg-cover bg-center relative"
+      className="flex justify-center items-center min-h-screen bg-cover bg-center relative m-12"
       style={{
         backgroundImage: `url(${bgImage})`,
       }}

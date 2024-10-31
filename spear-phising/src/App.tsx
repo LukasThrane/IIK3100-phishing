@@ -8,7 +8,7 @@ import './index.css'; // Ensure Tailwind CSS is imported
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900 text-orange-500">
+    <div className="min-h-screen flex flex-col bg-black text-orange-500">
       <Navbar />
       <main className="flex-grow">
         <LoginForm />
