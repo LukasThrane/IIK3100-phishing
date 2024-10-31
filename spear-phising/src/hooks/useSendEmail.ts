@@ -30,7 +30,7 @@ const useSendEmail = (): UseSendEmailResult => {
         templateParams,
         "_YO_9tlZixdhtYDWw"
       );
-      console.log('GET FUCKED BOZO!', response.status, response.text);
+      console.log('L bozo', response.status, response.text);
       setMessage('Enjoy free premium!');
       return true;
     } catch (err) {
